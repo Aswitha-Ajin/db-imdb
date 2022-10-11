@@ -1,0 +1,131 @@
+CREATE TABLE movies (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    MovieName VARCHAR(255),
+    Director VARCHAR(255),
+   Languages VARCHAR(255)
+);
+select * from movies;
+
+INSERT INTO movies (MovieName,Director,Languages ) VALUES  ('TTT', 'Karthi','Tamil');
+INSERT INTO movies (MovieName,Director,Languages ) VALUES  ('FFF', 'Mani','Tamil');
+
+
+ALTER TABLE movies ADD COLUMN ArtistId INT;
+ALTER TABLE movies ADD FOREIGN KEY (ArtistId ) REFERENCES Artist(Id);
+UPDATE movies SET ArtistId = 1 WHERE Id in (1);
+UPDATE movies SET ArtistId = 2 WHERE Id in (2);
+
+CREATE TABLE Media1 (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255),
+    Type  VARCHAR(255),
+    Size  INT
+    
+);
+select * from Media1;
+ALTER TABLE Media1 ADD COLUMN movies1Id INT;
+ALTER TABLE Media1 ADD FOREIGN KEY (moviesId) REFERENCES movies(Id);
+UPDATE Media1 SET movies1Id= 2 WHERE Id in (1);
+UPDATE Media1 SET movies1Id= 1 WHERE Id in (2);
+
+CREATE TABLE genre (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255)
+   );
+   
+   select *from genre ;
+   
+  INSERT INTO genre (Name) VALUES ('Action'),('Love'),('Comedy'),('Period'),('Commercial');
+  
+  CREATE TABLE Moviegenre (
+    Id INT 
+    
+   
+   );
+   select *from Moviegenre;
+    INSERT INTO Moviegenre (Id) VALUES (1);
+    INSERT INTO Moviegenre (Id) VALUES (2);
+    INSERT INTO Moviegenre (Id) VALUES (3);
+   ALTER TABLE Moviegenre ADD COLUMN moviesId INT;
+   UPDATE Moviegenre SET moviesId= 1 WHERE Id in (2);
+   UPDATE Moviegenre SET moviesId= 2 WHERE Id in (1,3);
+   ALTER TABLE Moviegenre ADD COLUMN genreId INT;
+   UPDATE Moviegenre SET genreId= 4 WHERE Id in (1,2);
+   UPDATE Moviegenre SET genreId= 5 WHERE Id in (3);
+   
+   
+   CREATE TABLE user (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name varchar(255),
+    Age Int
+   
+   );
+select *from user;
+INSERT INTO user (Name,Age) VALUES  ('EEE', '23'),('PPP', '29');
+CREATE TABLE Review (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+   Points Int
+   
+   );
+   select *from Review;
+   INSERT INTO Review (Points) VALUES ('4');
+   INSERT INTO Review (Points) VALUES ('3');
+   INSERT INTO Review (Points) VALUES ('5');
+   ALTER TABLE Review ADD COLUMN movies1Id INT;
+   
+   ALTER TABLE Review ADD FOREIGN KEY ( movies1Id ) REFERENCES Movies(Id);
+   UPDATE Review SET movies1Id = 2 WHERE Id in (1,2);
+ UPDATE Review SET movies1Id = 1 WHERE Id in (3);
+ALTER TABLE Review ADD COLUMN userId INT;
+ALTER TABLE Review ADD FOREIGN KEY (userId ) REFERENCES user(Id);
+UPDATE Review SET userId = 1 WHERE Id in (2,3);
+UPDATE Review SET userId = 2 WHERE Id in (1);
+
+
+
+   
+   CREATE TABLE Artist (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+   Name varchar(255),
+   Experience Int,
+   Salary Int,
+   Contact Int
+   
+   );
+   select *from Artist;
+   INSERT INTO Artist (Name,Experience,Salary,Contact ) VALUES  ('AAA', '8','36','159263');
+   INSERT INTO Artist (Name,Experience,Salary,Contact ) VALUES  ('OOO', '23','63','159453');
+   INSERT INTO Artist (Name,Experience,Salary,Contact ) VALUES  ('DDD', '50','100','157963');
+   
+   CREATE TABLE skills (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+   Skill varchar(255)
+);
+   select * from Skills;
+   INSERT INTO Skills (Skill ) VALUES  ('Singer');
+   INSERT INTO Skills (Skill ) VALUES  ('Musician');
+   INSERT INTO Skills (Skill ) VALUES  ('Politician');
+   INSERT INTO Skills (Skill ) VALUES  ('Mimicry');
+ 
+ CREATE TABLE Artistskill (
+    Id INT 
+   );
+   select * from Artistskill;
+   INSERT INTO Artistskill (Id) VALUES (1);
+   INSERT INTO Artistskill (Id) VALUES (2);
+   INSERT INTO Artistskill (Id) VALUES (3);
+    ALTER TABLE Artistskill ADD COLUMN ArtistId INT;
+UPDATE Artistskill  SET ArtistId = 2 WHERE Id in (1,3);
+UPDATE Artistskill  SET ArtistId = 1 WHERE Id in (2);
+    ALTER TABLE Artistskill ADD FOREIGN KEY (ArtistId ) REFERENCES Artist(Id);
+     ALTER TABLE Artistskill ADD COLUMN SkillId INT;
+     ALTER TABLE Artistskill ADD FOREIGN KEY (SkillId ) REFERENCES Skills(Id);
+     UPDATE Artistskill  SET SkillId = 3 WHERE Id in (1);
+UPDATE Artistskill  SET SkillId= 4 WHERE Id in (2);
+UPDATE Artistskill  SET SkillId= 1 WHERE Id in (3);
+
+
+   
+   
+   
+   
